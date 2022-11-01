@@ -14,3 +14,24 @@ dependencyResolutionManagement {
 }
 rootProject.name = "HelloWorld"
 include ':app'
+
+
+println 'settings.gradle:This is executed during the initialization phase.'
+
+
+gradle.settingsEvaluated {
+    println("==========settingsEvaluated==============")
+}
+
+gradle.projectsLoaded {
+    println("==========projectsLoaded==============")
+}
+
+gradle.beforeProject {
+
+}
+
+gradle.afterProject {
+
+}
+
