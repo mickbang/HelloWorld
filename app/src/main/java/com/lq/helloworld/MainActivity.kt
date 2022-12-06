@@ -18,20 +18,16 @@ class MainActivity : AppCompatActivity() {
             btnWrite.setOnClickListener {
                 val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
                 ImageExifUtils.writeImageExif(
-                    dir + "1669930844474.png",
-                    ImageExif("", -33.164024, 151.6262088)
+                    dir + "1670019899885.png",
+                    ImageExif("", -27.9340242, 153.3107258)
                 )
                 ImageExifUtils.writeImageExif(
-                    dir + "1669930851813.png",
-                    ImageExif("", -33.1634134, 151.6252078)
+                    dir + "1670036030867.png",
+                    ImageExif("", -27.9350242, 153.3097258)
                 )
                 ImageExifUtils.writeImageExif(
-                    dir + "1669945258137.png",
-                    ImageExif("", -33.163914, 151.6242098)
-                )
-                ImageExifUtils.writeImageExif(
-                    dir + "1669945279470.png",
-                    ImageExif("", -33.163804, 151.6242068)
+                    dir + "1670036250884.png",
+                    ImageExif("", -27.9360242, 153.3077258)
                 )
                 ToastUtils.showShort("写入成功！")
             }
