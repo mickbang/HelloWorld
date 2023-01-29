@@ -61,7 +61,7 @@ public class ImageExifUtils {
                         .getAttribute(ExifInterface.TAG_GPS_LONGITUDE);
                 String createTime = exif.getAttribute(ExifInterface.TAG_DATETIME_ORIGINAL);
 
-                if (tagLat == null && tagLon == null) {// 无经纬度信息
+//                if (tagLat == null && tagLon == null) {// 无经纬度信息
                     if (imageExif.getLatitude() != 0 && imageExif.getLongitude() != 0) {
                         exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE,
                                 decimalToDMS(Math.abs(imageExif.getLatitude())));
@@ -74,7 +74,7 @@ public class ImageExifUtils {
 
                         exif.saveAttributes();
                     }
-                }
+//                }
 
                 if (TextUtils.isEmpty(createTime)) {
                     if (!TextUtils.isEmpty(imageExif.getCreateTime())) {
