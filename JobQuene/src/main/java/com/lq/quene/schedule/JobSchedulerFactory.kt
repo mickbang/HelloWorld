@@ -1,6 +1,5 @@
 package com.lq.quene.schedule
 
-import com.lq.quene.JobScheduler
 import com.lq.quene.ThreadSchedulers
 
 

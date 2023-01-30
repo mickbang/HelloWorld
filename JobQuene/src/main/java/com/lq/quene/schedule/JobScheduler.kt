@@ -1,11 +1,13 @@
-package com.lq.quene
+package com.lq.quene.schedule
 
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
+import com.lq.quene.BaseJob
+import com.lq.quene.IJob
+import com.lq.quene.ThreadSchedulers
 import com.lq.quene.queue.BlockJobTaskQueue
-import com.lq.quene.schedule.BaseJobScheduler
 import java.util.concurrent.locks.Condition
 import java.util.concurrent.locks.ReentrantLock
 
