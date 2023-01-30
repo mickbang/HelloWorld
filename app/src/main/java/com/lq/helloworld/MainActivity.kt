@@ -8,7 +8,7 @@ import com.lq.quene.schedule.JobSchedulerFactory
 
 class MainActivity : AppCompatActivity() {
     private val scheduler by lazy {
-        JobSchedulerFactory.getMainScheduler()
+        JobSchedulerFactory.getAsyncScheduler()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,18 +16,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<View>(R.id.btn1).setOnClickListener {
-            LoggerTask("LOW1")
-                .setPriority(JobPriority.LOW)
-                .enqueue(scheduler)
-            LoggerTask("LOW2")
-                .setPriority(JobPriority.LOW)
-                .enqueue(scheduler)
-            LoggerTask("DEFAULT")
-                .setPriority(JobPriority.DEFAULT)
-                .enqueue(scheduler)
-            LoggerTask("HIGH")
-                .setPriority(JobPriority.HIGH)
-                .enqueue(scheduler)
+            val task = LoggerTask("LOW1").apply {
+                setPriority(JobPriority.LOW)
+                enqueue(scheduler)
+            }
+            scheduler.remove(task)
         }
         findViewById<View>(R.id.btn2).setOnClickListener {
             LoggerTask("LOW")

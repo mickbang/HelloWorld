@@ -13,4 +13,9 @@ object JobSchedulerFactory {
     fun getIoScheduler(): JobScheduler {
         return JobScheduler(threadScheduler = ThreadSchedulers.IO)
     }
+
+    @JvmStatic
+    fun getAsyncScheduler(): AsyncJobScheduler {
+        return AsyncJobScheduler("33333")
+    }
 }

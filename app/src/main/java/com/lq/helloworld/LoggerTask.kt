@@ -9,7 +9,7 @@ private const val TAG = "LoggerTask"
 class LoggerTask(private val text: String) : BaseJob(text.hashCode()) {
 
     override fun doJob(): Result {
-        Log.d(TAG, "doJob: $text ==== ${Thread.currentThread()}")
+        Log.d(TAG, "doJob: $text ==== ${Thread.currentThread().name}")
         return Result.SUCCESS
     }
 }
