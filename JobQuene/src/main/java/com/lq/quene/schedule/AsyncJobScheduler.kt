@@ -1,7 +1,6 @@
 package com.lq.quene.schedule
 
 import android.os.AsyncTask
-import android.util.Log
 import com.lq.quene.BaseJob
 import com.lq.quene.queue.BlockJobTaskQueue
 import java.util.concurrent.ExecutorService
@@ -11,7 +10,8 @@ import java.util.concurrent.locks.ReentrantLock
 private const val TAG = "AsyncJobScheduler"
 
 @Suppress("DEPRECATION")
-class AsyncJobScheduler(val pvdId: String) : AsyncTask<String, Int, Boolean>(), IJobScheduler {
+class AsyncJobScheduler(private val pvdId: String) : AsyncTask<String, Int, Boolean>(),
+    IJobScheduler {
 
     private val lock by lazy {
         ReentrantLock()
@@ -31,9 +31,10 @@ class AsyncJobScheduler(val pvdId: String) : AsyncTask<String, Int, Boolean>(), 
     }
 
     /**
-     * take和remove可能同时进行，ke换成非阻塞队列加锁处理
+     * take和remove可能同时进行，可换成非阻塞队列加锁处理
      */
     override fun doInBackground(vararg p0: String?): Boolean {
+        //自动添加job
         while (true) {
             val job = queue.take()
             if (job != null) {
