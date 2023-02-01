@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             btnWrite.setOnClickListener {
                 val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
                 ImageExifUtils.writeImageExif(
-                    dir + "20220912_141052.jpeg",
+                    dir + "1655346257315.png",
                     ImageExif("", -27.4245439 ,153.0771826)
                 )
 //                ImageExifUtils.writeImageExif(
