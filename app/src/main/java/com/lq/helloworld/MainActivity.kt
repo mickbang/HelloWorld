@@ -15,11 +15,16 @@ class MainActivity : AppCompatActivity() {
         val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
         FileUtils.createOrExistsDir(dir)
         binding.apply {
+
             btnWrite.setOnClickListener {
                 val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
                 ImageExifUtils.writeImageExif(
-                    dir + "1655346257315.png",
-                    ImageExif("", -27.4245439 ,153.0771826)
+                    dir + "IMG_HEAD_AGREE_2578751678227903579_installer.png",
+                    ImageExif("2023-03-08 09:25:08", -28.2391242,153.4977817)
+                )
+                ImageExifUtils.writeImageExif(
+                    dir + "IMG_HEAD_257875_installer.png",
+                    ImageExif("2023-03-08 09:25:09", -28.2391242,153.4977817)
                 )
 //                ImageExifUtils.writeImageExif(
 //                    dir + "1669703074578.png",
