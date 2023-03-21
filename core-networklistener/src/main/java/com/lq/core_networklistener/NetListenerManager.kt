@@ -14,6 +14,8 @@ import android.view.animation.TranslateAnimation
 import android.widget.FrameLayout
 import android.widget.TextView
 import java.lang.ref.WeakReference
+import javax.security.auth.callback.Callback
+
 
 object NetListenerManager {
 
@@ -49,7 +51,7 @@ object NetListenerManager {
             }
 
             override fun onActivityStopped(p0: Activity) {
-
+                p0.findViewById<TextView?>(R.id.net_listener_tips_text)?.visibility = View.GONE
             }
 
             override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
@@ -67,7 +69,8 @@ object NetListenerManager {
     }
 }
 
-class ActivityNetListener(activity: Activity) : InternetConnectionListener {
+class ActivityNetListener(activity: Activity) :
+    InternetConnectionListener {
     private val activityWeak by lazy {
         WeakReference<Activity>(activity)
     }
@@ -102,14 +105,15 @@ class ActivityNetListener(activity: Activity) : InternetConnectionListener {
         }
     }
 
-
     override fun onConnected(source: Int) {
         activityWeak.get()?.let {
             val container = it.findViewById<FrameLayout>(android.R.id.content)
             var tipsText = container.findViewById<TextView?>(R.id.net_listener_tips_text)
-            tipsText.text = "BACK ONLINE"
-            tipsText.setBackgroundColor(Color.parseColor("#005D2D"))
-            tipsText.startAnimation(translateAniHide)
+            tipsText?.text = "BACK ONLINE"
+            tipsText?.setBackgroundColor(Color.parseColor("#005D2D"))
+            if (tipsText?.visibility == View.VISIBLE) {
+                tipsText?.startAnimation(translateAniHide)
+            }
             tipsText?.visibility = View.GONE
         }
     }

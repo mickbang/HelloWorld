@@ -97,6 +97,11 @@ public class Observer {
 
     public Observer setCallBack(InternetConnectionListener uiNavigator){
         ConnectionHandler.setUiNavigator(uiNavigator);
+        if (isConnected()) {
+            uiNavigator.onConnected(-1);
+        }else {
+            uiNavigator.onDisconnected();
+        }
         return this;
     }
 
