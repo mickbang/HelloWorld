@@ -19,10 +19,10 @@ import javax.security.auth.callback.Callback
 
 object NetListenerManager {
 
-    private val ignoreList = mutableListOf<Activity>()
+    private val ignoreList = mutableListOf<Int>()
 
-    fun ignore(activity: Activity) {
-        ignoreList.add(activity)
+    fun ignore(activity: Class<*>) {
+        ignoreList.add(activity.hashCode())
     }
 
     fun init(application: Application) {
@@ -36,7 +36,7 @@ object NetListenerManager {
             }
 
             override fun onActivityResumed(p0: Activity) {
-                if (!ignoreList.contains(p0)) {
+                if (!ignoreList.contains(p0::class.hashCode())) {
                     NetListener.observer(p0)
                         .setSnackBarEnabled(false)
                         .setLogsEnabled(false)
@@ -60,7 +60,7 @@ object NetListenerManager {
 
             override fun onActivityDestroyed(p0: Activity) {
                 p0.findViewById<TextView?>(R.id.net_listener_tips_text)?.clearAnimation()
-                if (!ignoreList.contains(p0)) {
+                if (!ignoreList.contains(p0::class.hashCode())) {
                     NetListener.unregister(p0.applicationContext)
                 }
             }
