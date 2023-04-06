@@ -1,4 +1,4 @@
-package com.lq.calendar
+package com.lq.calendar.v2
 
 import android.content.Context
 import android.graphics.Color
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.lq.calendar.R
 import com.lq.calendar.databinding.ViewCalendarBinding
 import java.util.Calendar
 

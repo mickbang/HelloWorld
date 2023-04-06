@@ -2,10 +2,7 @@ package com.lq.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.lq.calendar.Month2WeekViewPagerAdapter
-import com.lq.calendar.OnCalendarSelectorListener
-import com.lq.calendar.UIDay
+import com.lq.calendar.v2.OnCalendarSelectorListener
 import com.lq.helloworld.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar

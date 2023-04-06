@@ -1,4 +1,4 @@
-package com.lq.calendar
+package com.lq.calendar.v2
 
 import android.content.Context
 import android.content.res.Resources

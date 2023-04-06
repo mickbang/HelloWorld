@@ -39,7 +39,7 @@
             android:text="next" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <com.lq.calendar.WeekView
+    <com.lq.calendar.v2.WeekView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
