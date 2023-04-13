@@ -13,7 +13,7 @@ public class TimeUtil {
     public static String FORMAT_SECOND = "MMM dd yyyy HH:mm:ss";
     public static String FORMAT_DAY = "MMM dd yyyy";
     public static String FORMAT_TIME_STAND = "yyyy-MM-dd HH:mm:ss.SSS Z";
-    public static String FORMAT_TIME_API = "yyyy-MM-dd HH:mm:ss Z";
+    public static String FORMAT_TIME_API = "yyyy-MM-dd HH:mm:ss";
     public static String TIME_ZONE = "Australia/Sydney";
 
     public static Date stringToDate(String sourceFormat, String time) {

@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
             btnWrite.setOnClickListener {
                 val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
                 ImageExifUtils.writeImageExif(
-                    dir + "IMG_HEAD_AGREE_2578751678227903579_installer.png",
-                    ImageExif("2023-03-08 09:25:08", -28.2391242,153.4977817)
+                            dir + "IMG_HEAD_265471_installer.png",
+                    ImageExif("2023-03-31 15:54:08", -33.6162264,150.9045533)
                 )
-                ImageExifUtils.writeImageExif(
-                    dir + "IMG_HEAD_257875_installer.png",
-                    ImageExif("2023-03-08 09:25:09", -28.2391242,153.4977817)
-                )
+//                ImageExifUtils.writeImageExif(
+//                    dir + "IMG_HEAD_257875_installer.png",
+//                    ImageExif("2023-03-08 09:25:09", -28.2391242,153.4977817)
+//                )
 //                ImageExifUtils.writeImageExif(
 //                    dir + "1669703074578.png",
 //                    ImageExif("", -12.390869, 130.8668757)
