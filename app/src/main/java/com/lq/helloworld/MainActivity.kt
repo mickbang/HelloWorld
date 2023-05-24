@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), TextResultListener {
         mBarcodeReader.setCameraEnhancer(mCameraEnhancer)
 
         BarcodeReader.initLicense(
-            "f0068NQAAAGbuhFaxQ5FxER/RBRir4icpyVRfBvZw2k2VmkqTz4wpxiGZZAN4v3lp2/qPhv6zhQGWhr1tI1sKkVu/PF9WaLs=;f0068NQAAAJJBpnkl5wyvM2lftdrSMEs2j3mnPqFmInsxkW7R/m9kRTpcRAP8VY5dAqk9eQ0vvZLKN3fBeOEeJQnKWNJbLGY="
+            ""
         ) { p0, p1 ->
             if (p0) {
                 Log.d(TAG, "onCreate: init success")
