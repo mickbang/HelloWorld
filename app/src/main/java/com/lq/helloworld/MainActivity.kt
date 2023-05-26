@@ -12,6 +12,8 @@ import com.dynamsoft.dbr.TextResult
 import com.dynamsoft.dbr.TextResultListener
 import com.dynamsoft.dce.CameraEnhancer
 import com.dynamsoft.dce.CameraEnhancerException
+import com.dynamsoft.dce.EnumResolution
+import com.dynamsoft.dce.RegionDefinition
 import com.lq.helloworld.databinding.ActivityMainBinding
 
 
@@ -34,13 +36,16 @@ class MainActivity : AppCompatActivity(), TextResultListener {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         mCameraEnhancer.cameraView = binding.cameraView
+        mCameraEnhancer.scanRegion = RegionDefinition(5,30,95,50,1)
+        mCameraEnhancer.scanRegionVisible = true
+        mCameraEnhancer.setResolution(EnumResolution.RESOLUTION_4K)
 //        binding.cameraView.overlayVisible = true
 //        binding.cameraView.removeOverlay()
         mBarcodeReader.setCameraEnhancer(mCameraEnhancer)
 
         BarcodeReader.initLicense(
-            ""
-        ) { p0, p1 ->
+
+""        ) { p0, p1 ->
             if (p0) {
                 Log.d(TAG, "onCreate: init success")
             } else {
@@ -81,20 +86,20 @@ class MainActivity : AppCompatActivity(), TextResultListener {
                 ss.append(it.barcodeText + "\n")
             }
             Log.d(TAG, "textResultCallback: $ss")
-           runOnUiThread {
-               try {
-                   if (lastResult == ss.toString()) {
-                       sameCount++
-                       binding.tvResult.text = "$sameCount \n$ss"
-                   } else {
-                       sameCount = 1
-                       lastResult = ss.toString()
-                       binding.tvResult.text = ss
-                   }
-               }catch (e:Exception){
-                   e.printStackTrace()
-               }
-           }
+            runOnUiThread {
+                try {
+                    if (lastResult == ss.toString()) {
+                        sameCount++
+                        binding.tvResult.text = "$sameCount \n$ss"
+                    } else {
+                        sameCount = 1
+                        lastResult = ss.toString()
+                        binding.tvResult.text = ss
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
         }
     }
 }
