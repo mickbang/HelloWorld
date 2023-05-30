@@ -1,30 +1,13 @@
 package com.lq.helloworld
 
-import android.Manifest
-import android.content.ContentValues
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import android.view.WindowManager
-import android.widget.Toast
-import androidx.camera.core.*
-import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import com.blankj.utilcode.util.FragmentUtils
+import com.lq.helloworld.camera.CameraFragment
 import com.lq.helloworld.camerax.CameraxActivity
 import com.lq.helloworld.databinding.ActivityMainBinding
-import java.lang.Integer.min
-import java.lang.Math.abs
-import java.lang.Math.max
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import com.permissionx.guolindev.PermissionX
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
@@ -41,5 +24,19 @@ class MainActivity : AppCompatActivity() {
         viewBinding.camera2Button.setOnClickListener {
 
         }
+
+
+        PermissionX.init(this)
+            .permissions(android.Manifest.permission.CAMERA)
+            .request { allGranted, _, _ ->
+                if (allGranted) {
+                    FragmentUtils.add(
+                        supportFragmentManager,
+                        CameraFragment.newInstance(),
+                        R.id.contentContainer,
+                        "camera"
+                    )
+                }
+            }
     }
 }
