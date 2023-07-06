@@ -18,10 +18,14 @@ class MainActivity : AppCompatActivity() {
 
             btnWrite.setOnClickListener {
                 val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
+                var filepath = dir + "Completed_selfie.jpeg"
+                println("执行路径：${filepath}")
                 ImageExifUtils.writeImageExif(
-                            dir + "IMG_HEAD_265471_installer.png",
-                    ImageExif("2023-03-31 15:54:08", -33.6162264,150.9045533)
+                    filepath,
+                    ImageExif("2023-06-30 16:15:08", -31.8747429 ,115.9972495
+                    )
                 )
+                println("写入geo结果：${ImageExifUtils.getImageExif(filepath)}")
 //                ImageExifUtils.writeImageExif(
 //                    dir + "IMG_HEAD_257875_installer.png",
 //                    ImageExif("2023-03-08 09:25:09", -28.2391242,153.4977817)
