@@ -38,14 +38,13 @@ class MainActivity : AppCompatActivity(), TextResultListener {
         mCameraEnhancer.cameraView = binding.cameraView
         mCameraEnhancer.scanRegion = RegionDefinition(5,30,95,50,1)
         mCameraEnhancer.scanRegionVisible = true
-        mCameraEnhancer.setResolution(EnumResolution.RESOLUTION_4K)
+        mCameraEnhancer.setResolution(EnumResolution.RESOLUTION_2K)
 //        binding.cameraView.overlayVisible = true
 //        binding.cameraView.removeOverlay()
         mBarcodeReader.setCameraEnhancer(mCameraEnhancer)
-
+        mCameraEnhancer.setZoom(1.6f)
         BarcodeReader.initLicense(
-
-""        ) { p0, p1 ->
+"f0068NQAAAGbuhFaxQ5FxER/RBRir4icpyVRfBvZw2k2VmkqTz4wpxiGZZAN4v3lp2/qPhv6zhQGWhr1tI1sKkVu/PF9WaLs=;f0068NQAAAJJBpnkl5wyvM2lftdrSMEs2j3mnPqFmInsxkW7R/m9kRTpcRAP8VY5dAqk9eQ0vvZLKN3fBeOEeJQnKWNJbLGY="        ) { p0, p1 ->
             if (p0) {
                 Log.d(TAG, "onCreate: init success")
             } else {
@@ -54,6 +53,8 @@ class MainActivity : AppCompatActivity(), TextResultListener {
 
         }
         mBarcodeReader.setTextResultListener(this)
+
+        mBarcodeReader.initRuntimeSettingsWithString("",0)
     }
 
 
