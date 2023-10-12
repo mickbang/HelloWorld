@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi;
 
 
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -109,17 +110,18 @@ public class ImageExifUtils {
             if (TextUtils.isEmpty(timezone)) {
                 timezone = TimeZone.getDefault().getDisplayName()+"";
             }
-            createTime = createTime +" "+ timezone;
+
+           String createTime1 = StringUtils.isEmpty(timezone)?createTime : createTime +" "+ timezone;
             try {
                 if (!TextUtils.isEmpty(createTime)) {
                     SimpleDateFormat simpleDateFormat =  new SimpleDateFormat(EXIF_TIME_FORMAT);
-                    Date date = simpleDateFormat.parse(createTime);
-                    createTime = TimeUtil.formatApi(date);
+                    Date date = simpleDateFormat.parse(createTime1);
+                    createTime1 = TimeUtil.formatApi(date);
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            return new ImageExif(createTime, latitude, longitude);
+            return new ImageExif(createTime1, latitude, longitude);
         } catch (IOException e) {
             e.printStackTrace();
         }

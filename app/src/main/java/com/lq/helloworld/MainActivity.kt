@@ -15,14 +15,13 @@ class MainActivity : AppCompatActivity() {
         val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
         FileUtils.createOrExistsDir(dir)
         binding.apply {
-
             btnWrite.setOnClickListener {
                 val dir = getExternalFilesDir(null)?.absolutePath + "/Photo/"
-                var filepath = dir + "IMG_HEAD_AGREE_2843541692946430891_installer.png"
+                var filepath = dir + "WechatIMG17297.jpg"
                 println("执行路径：${filepath}")
                 ImageExifUtils.writeImageExif(
                     filepath,
-                    ImageExif("2023-08-25 14:53:08", -32.0686987 ,115.7744013
+                    ImageExif("2023-09-26 12:27:08", -27.5825793,152.9825345
                     )
                 )
                 println("写入geo结果：${ImageExifUtils.getImageExif(filepath)}")
