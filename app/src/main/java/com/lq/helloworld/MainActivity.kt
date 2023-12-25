@@ -3,44 +3,66 @@ package com.lq.helloworld
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
+import com.lq.helloworld.databinding.ActivityMainBinding
 import dalvik.system.DexClassLoader
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
-
+    private val viewModel = MainViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d(TAG, "onCreate1: ${Thread.currentThread().name}")
-        GlobalScope.launch {
-            Log.d(TAG, "onCreate2: ${Thread.currentThread().name}")
-            runBlocking {
-                launch {
-                    delay(100)
-                    Log.d(TAG, "onCreate3: ${Thread.currentThread().name}")
-                }
-                launch {
-                    delay(100)
-                    Log.d(TAG, "onCreate4: ${Thread.currentThread().name}")
-                }
-
-              val a =   async {
-
-                }
-                a.await()
+        val binding =
+            DataBindingUtil.setContentView<ActivityMainBinding>(/* activity = */ this,/* layoutId = */
+                R.layout.activity_main
+            )
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.apply {
+            btnUpdate.setOnClickListener {
+                this@MainActivity.viewModel.onIntent(MainUIIntent.Update)
             }
 
-            Log.d(TAG, "onCreate6: ${Thread.currentThread().name}")
-
-
+            btnClear.setOnClickListener {
+                this@MainActivity.viewModel.onIntent(MainUIIntent.Delete)
+            }
         }
-        Log.d(TAG, "onCreate7: ${Thread.currentThread().name}")
+
+
+        lifecycleScope.launch {
+            viewModel.result.collectLatest {
+                when (it) {
+                    MainUIState.Error -> showError()
+                    MainUIState.Loading -> showLoading()
+                    is MainUIState.Success -> showContent(it.text)
+                }
+            }
+        }
+
+        viewModel.getData()
     }
+
+    private fun showContent(text: String) {
+        Log.d(TAG, "showContent: $text")
+    }
+
+    private fun showLoading() {
+
+    }
+
+    private fun showError() {
+
+    }
+
 
 }
