@@ -18,51 +18,8 @@ import kotlinx.coroutines.runBlocking
 private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel = MainViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val binding =
-            DataBindingUtil.setContentView<ActivityMainBinding>(/* activity = */ this,/* layoutId = */
-                R.layout.activity_main
-            )
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
-        binding.apply {
-            btnUpdate.setOnClickListener {
-                this@MainActivity.viewModel.onIntent(MainUIIntent.Update)
-            }
-
-            btnClear.setOnClickListener {
-                this@MainActivity.viewModel.onIntent(MainUIIntent.Delete)
-            }
-        }
-
-
-        lifecycleScope.launch {
-            viewModel.result.collectLatest {
-                when (it) {
-                    MainUIState.Error -> showError()
-                    MainUIState.Loading -> showLoading()
-                    is MainUIState.Success -> showContent(it.text)
-                }
-            }
-        }
-
-        viewModel.getData()
     }
-
-    private fun showContent(text: String) {
-        Log.d(TAG, "showContent: $text")
-    }
-
-    private fun showLoading() {
-
-    }
-
-    private fun showError() {
-
-    }
-
-
 }

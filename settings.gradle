@@ -18,3 +18,5 @@ dependencyResolutionManagement {
 rootProject.name = "HelloWorld"
 include ':app'
 include ':javalib'
+include ':customview'
+include ':common'
