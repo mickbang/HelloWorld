@@ -2,20 +2,14 @@ package com.client.customview.widgets
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
-import android.graphics.PathEffect
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.RectF
-import android.graphics.Xfermode
-import android.graphics.drawable.Drawable
-import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import com.blankj.utilcode.util.ImageUtils
-import com.blankj.utilcode.util.Utils
 import com.client.common.dp
 import com.client.customview.R
 
@@ -23,7 +17,7 @@ import com.client.customview.R
  *
  */
 
-class CustomView : View {
+class CircleView : View {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val image = ImageUtils.getBitmap(R.drawable.avator, 50.dp, 50.dp)
     private val circlePath = Path()
@@ -52,10 +46,11 @@ class CustomView : View {
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-
         srcRectF = RectF(0f,0f,width.toFloat(),height.toFloat())
+    }
 
-
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     override fun onDraw(canvas: Canvas) {
