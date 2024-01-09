@@ -1,6 +1,5 @@
 package com.client.common
 
-import android.content.res.Resources
 import com.blankj.utilcode.util.SizeUtils
 
 val Int.dp: Int

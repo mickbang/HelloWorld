@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val view = findViewById<CanvasView>(R.id.animatorView)
-        view.setOnClickListener {
-            view.startAnimatorCus()
-        }
+//
+//        val view = findViewById<CanvasView>(R.id.animatorView)
+//        view.setOnClickListener {
+//            view.startAnimatorCus()
+//        }
     }
 
 
