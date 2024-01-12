@@ -24,6 +24,7 @@ public class AtomicTest implements Runnable{
 //                break;
 //            }
 //        }
+
         ThreadDemo1 test = new ThreadDemo1();
         new Thread(test).start();
         while (true){
