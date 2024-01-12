@@ -1,4 +1,4 @@
-package com.client.javalib;
+package com.client.javalib.thread;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

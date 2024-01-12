@@ -1,4 +1,4 @@
-package com.client.javalib;
+package com.client.javalib.thread;
 
 //Thread 的停止
 //1 使用Thread.stop() 这种方式会导致线程停止后，状态不正常，容易产生数据不一致的情况。不建议使用，你也不知道他会在什么时候停止
