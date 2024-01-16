@@ -3,9 +3,13 @@ package com.client.hotupdatedemo;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.client.hotupdatedemo.hook.HookContext;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +32,12 @@ public class HotFixActivity extends AppCompatActivity {
     Button btnHotFix;
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(new HookContext(newBase));
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hot_fix);
@@ -36,11 +46,13 @@ public class HotFixActivity extends AppCompatActivity {
         btnHotFix = findViewById(R.id.btnHotFix);
 
         btnShowTitle.setOnClickListener(v -> {
-            Title title = new Title();
-            tvTitle.setText(title.showTitle());
+//            Title title = new Title();
+//            tvTitle.setText(title.showTitle());
+            tvTitle.setText(getString(123));
         });
 
         btnHotFix.setOnClickListener(v -> {
+
 //            hotFix();
         });
 

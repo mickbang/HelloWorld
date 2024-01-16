@@ -1,10 +1,12 @@
 package com.client.hotupdatedemo;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.client.hotupdatedemo.hook.HookContext;
 import com.client.hotupdatedemo.utils.Utils;
 
 import java.io.File;
@@ -21,6 +23,11 @@ import okio.Okio;
 import okio.Source;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(new HookContext(newBase));
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
